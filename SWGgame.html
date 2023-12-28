@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake, Water, Gun</title>
+</head>
+
+<body>
+    <h1>Game</h1>
+    <h2>Snake Water Gun</h2>
+    <div class="container">
+        <p>Please Your Player</p>
+        <div class="btns">
+            <button onclick="playGame('snake')">Snake</button>
+            <button onclick="playGame('water')">Water</button>
+            <button onclick="playGame('gun')">Gun</button>
+        </div>
+        <div class="result_div">
+            <p> <span id="result"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function playGame(userplay) {
+            const choice = ["snake", "water", "gun"];
+            const compPlay = choice[Math.floor(Math.random() * 3)]
+
+            const result = getWinner(userplay, compPlay);
+            // console.log("your result is", result);
+            document.getElementById('result').innerHTML = `You chose ${userplay}.<br>Computer chose ${compPlay}.<br>${result}`
+
+        }
+        function getWinner(player1, player2) {
+            // console.log(player1, player2);
+            if (player1 == player2) {
+                return "Tie!";
+            }
+            if (
+                (player1 === "snake" && player2 === "water") ||
+                (player1 === "water" && player2 === "gun") ||
+                (player1 === "gun" && player2 === "snake")
+            ) {
+                return "Win!";
+            }
+            else {
+                return "Loss!"
+            }
+        }
+    </script>
+</body>
+
+</html>
